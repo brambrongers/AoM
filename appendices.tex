@@ -71,116 +71,120 @@ In classical mechanics, the Frobenius theorem has the following application.
 Without trying to give a precise definition for what a holonomic set of constraints is, this means that the constraints determine an involutive distribution if and only if we can find solutions to the specified equations of motion.
 
 \section{Prelude to Lie Algebroids}
-
 The Frobenius theorem is remarkable result, in that we can express a particularly desirable situation (complete integrability) in terms of a purely algebraic criterion (involutivity). These situations occur more often in mathematics and physics, as we now outline. We will not elaborate much on the definitions, as these topics could fill entire books. Rather, this is to motivate and encourage the interested reader.\par 
 There is a theory of complex manifolds, which is very much analogous to that of smooth manifolds, except using holomorphic atlases/transition functions/vector bundles, etc. The tangent bundle of a complex manifold $Z$ then inherits a pointwise linear map $J:TZ\to TZ$ satisfying $J^2=-\text{id}$, owing to its underlying complex structure. Such a map might also exist on a smooth (even-dimensional) manifold. It is then called an almost complex structure on $M$. It is a natural question to ask when such a map $J$ comes from the structure of a complex manifold, that is, can $M$ be given the structure of a complex manifold so that $J$ is its associated map $J:TM\to TM$ on the (holomorphic) tangent bundle? The answers can be reformulated in a certain "bracket criterion". 
-\begin{theorem}[Newlander-Nirenberg Theorem \cite{Voisin2002}]
-  %https://doi.org/10.1017/CBO9780511615344
-  Let $J:TM\to TM$ be an almost complex structure on $M$. Then it comes from a complex structure if and only if $[J,J]_N=0$, where $[\cdot,\cdot]_N$ is the Nijenhuis bracket.
+\begin{theorem}[Newlander-Nirenberg Theorem \cite{voisin}]
+%https://doi.org/10.1017/CBO9780511615344
+Let $J:TM\to TM$ be an almost complex structure on $M$. Then it comes from a complex structure if and only if $[J,J]_N=0$, where $[\cdot,\cdot]_N$ is the Nijenhuis bracket.
 \end{theorem}
 Related to the theory of almost complex structures, is symplectic geometry. This type of geometry is a "weaker" notion than that of Riemannian geometry, in the sense that it isn't as restrictive. Any Riemannian metric provides an isomorphism $TM\to T^*M$ given by $X\mapsto g(X,\cdot)$, but it provides other structure as well. 
 \begin{definition}
-  An almost symplectic manifold is a pair $(M,\omega)$ where $\omega\in\Omega^2(M)$ provides an isomorphism $\phi:TM\to T^*M$ by $X\mapsto \omega(X,\cdot)$. If, additionally, $d\omega=0$, then the pair $(M,\omega)$ is called a symplectic manifold.
+An almost symplectic manifold is a pair $(M,\omega)$ where $\omega\in\Omega^2(M)$ provides an isomorphism $\phi:TM\to T^*M$ by $X\mapsto \omega(X,\cdot)$. If, additionally, $d\omega=0$, then the pair $(M,\omega)$ is called a symplectic manifold.
 \end{definition}
 On an almost symplectic manifold, we can associate a vector field $X_h$ to any function $h:M\to\mathbb{R}$. We do this by taking the differential, and then using the inverse isomorphism provided by $\omega$. Thus, we define $X_h=\phi^{-1}(dh)$ and call it the Hamiltonian vector field of $h$. Given these structures, we can define a bracket operation on $C^\infty(M)$ as follows. We define $\{\cdot,\cdot\}:C^\infty(M)\times C^\infty(M)\to C^\infty(M)$ by $\{f,g\}=-X_fg$. Since $\{f,\cdot\}$ is given by a vector field, this is a derivation of the algebra $C^\infty(M)$. Furthermore, it is anti-symmetric. The question is whether the bracket defined in this way satisfies the Jacobi identity. 
 \begin{theorem}
-  The bracket $\{\cdot,\cdot\}:C^\infty(M)\times C^\infty(M)\to C^\infty(M)$ satisfies the Jacobi identity if and only if the almost symplectic structure is a symplectic structure. That is, if and only if $d\omega=0$. In this case, $(C^\infty(M),\{\cdot,\cdot\})$ is a Lie algebra.
+The bracket $\{\cdot,\cdot\}:C^\infty(M)\times C^\infty(M)\to C^\infty(M)$ satisfies the Jacobi identity if and only if the almost symplectic structure is a symplectic structure. That is, if and only if $d\omega=0$. In this case, $(C^\infty(M),\{\cdot,\cdot\})$ is a Lie algebra.
 \end{theorem}
 Again, here we have an equivalence between the "integrability" of a certain structure, and a "bracket criterion" given by the Jacobi identity. 
-\begin{example}
-  Let $M$ be a smooth manifold. Then $T^*M$ can be given a natural symplectic structure. The key point here, is to notice that $T^*M\xrightarrow{\pi}M$ comes equipped with a natural $1$-form, called the tautological $1$-form $\tau\in\Omega^1(T^*M)$. To understand this, let $\eta\in T^*M$. Then $\eta\in \pi^{-1}(x)$ for some unique $x\in M$. That is, $\eta:T_xM\to \mathbb{R}$ is a linear map. Now, if $X\in T_\eta T^*M$, then we have $d\pi(X)\in T_{\pi(\eta)}M=T_xM$. As a result, we can evaluate $\eta(d\pi(X))$. In this way, we get a $1$-form $\tau_\eta(X)=\pi^*\eta(X)$. The $2$-form $\omega:=-d\tau$ is a symplectic form on $T^*M$, called the canonical (or tautological) symplectic form.
-\end{example}
+\begin{exmp}
+Let $M$ be a smooth manifold. Then $T^*M$ can be given a natural symplectic structure. The key point here, is to notice that $T^*M\xrightarrow{\pi}M$ comes equipped with a natural $1$-form, called the tautological $1$-form $\tau\in\Omega^1(T^*M)$. To understand this, let $\eta\in T^*M$. Then $\eta\in \pi^{-1}(x)$ for some unique $x\in M$. That is, $\eta:T_xM\to \mathbb{R}$ is a linear map. Now, if $X\in T_\eta T^*M$, then we have $d\pi(X)\in T_{\pi(\eta)}M=T_xM$. As a result, we can evaluate $\eta(d\pi(X))$. In this way, we get a $1$-form $\tau_\eta(X)=\pi^*\eta(X)$. The $2$-form $\omega:=-d\tau$ is a symplectic form on $T^*M$, called the canonical (or tautological) symplectic form.
+\end{exmp}
 Another important class of symplectic manifolds arises from complex geometry, and these are the so-called Kähler manifolds. Every smooth projective complex variety is an example of such a manifold, by Serre's GAGA theorem.
-\begin{theorem}[Serre \cite{Serre1956}]
-  %https://doi.org/10.5802%2Faif.59 
-  There is an equivalence of categories between smooth projective algebraic varieties, and connected projective complex manifolds $Z\subset\mathbb{CP}^n$.
+\begin{theorem}[Serre \cite{serre}]
+%https://doi.org/10.5802%2Faif.59 
+There is an equivalence of categories between smooth projective algebraic varieties, and connected projective complex manifolds $Z\subset\mathbb{CP}^n$.
 \end{theorem}
 In light of this theorem, we shall prove that $\mathbb{CP}^n$ has a canonical symplectic form, which provides us with a large class of symplectic manifolds with a canonical symplectic structure. One of the most well-known examples of homological mirror symmetry, which arose from string theory, is given by the quintic threefold
 $$Z:=\{[z_0:z_1:z_2:z_3:z_4]\in\mathbb{CP}^4\mid \sum z_i^5=0\}$$
-This is a smooth projective variety of great historical importance, because it propelled the idea of mirror symmetry from being an obscure physical theory, to a mathematical conjecture, as found in \cite{Kontsevich1994Homological}.
+This is a smooth projective variety of great historical importance, because it propelled the idea of mirror symmetry from being an obscure physical theory, to a mathematical conjecture, as found in \cite{kontsevich}.
 %https://arxiv.org/abs/alg-geom/9411018
 The homological mirror symmetry conjecture (which has been verified for a large number of examples) uses the symplectic structure on a manifold to construct the so-called Fukaya category. The conjecture asserts that this category is equivalent to a certain category defined over its mirror pair.\\
 However, we cannot even hope to touch upon mirror symmetry here. Instead, we will carry on to prove our assertion that complex projective space has a canonical symplectic structure. The main result that we need is the following.
 \begin{theorem}
-  Complex projective space $\mathbb{CP}^n$ inherits a metric $h$ from $\mathbb{C}^{n+1}$ called the Fubini-Study metric.
+Complex projective space $\mathbb{CP}^n$ inherits a metric $h$ from $\mathbb{C}^{n+1}$ called the Fubini-Study metric.
 \end{theorem}
 \begin{proof}
-  We can obtain $\mathbb{CP}^n$ from $\mathbb{C}^{n+1}$ as follows. First we take $S^{2n+1}=\mathbb{C}^{n+1}/\sim$, where $z\sim\lambda z$ for $\lambda\in\mathbb{R}_+$. Then we obtain $\mathbb{CP}^n$ from $S^{2n+1}$ through the equivalence relation $z\sim ze^{i\theta}$. In summary, we have
-  $$\mathbb{C}^{n+1}\xhookrightarrow{\pi_1} S^{2n+1}\xhookrightarrow{\pi_2}\mathbb{CP}^n$$
-  On $\mathbb{C}^{n+1}$ we have a canonical metric defined by $g=\sum_{i=0}^{n}dz_i\otimes d\overline{z}_i$. We would like this metric to descend to the quotient. Let $\iota:S^{2n+1}\to\mathbb{C}^{n+1}$ be the inclusion map. Then $\iota^*g$ is a canonically defined metric on $S^{2n+1}$, called the round metric. It is constant on the fibres of $\pi_2$, since the fibres are the orbits of $U(1)$. We leave the details as an exercise. Therefore, $\iota^*g$ descends to $\mathbb{CP}^n$, to give the Fubini-Study metric. In local coordinates, it is given by
-  $$h(\frac{\partial}{\partial z_i},\frac{\partial}{\partial\overline{z}_j})=\frac{(1+|z|^2)\delta_{ij}-\overline{z}_iz_j}{(1+|z|^2)^2}$$
+We can obtain $\mathbb{CP}^n$ from $\mathbb{C}^{n+1}$ as follows. First we take $S^{2n+1}=\mathbb{C}^{n+1}/\sim$, where $z\sim\lambda z$ for $\lambda\in\mathbb{R}_+$. Then we obtain $\mathbb{CP}^n$ from $S^{2n+1}$ through the equivalence relation $z\sim ze^{i\theta}$. In summary, we have
+$$\mathbb{C}^{n+1}\xhookrightarrow{\pi_1} S^{2n+1}\xhookrightarrow{\pi_2}\mathbb{CP}^n$$
+On $\mathbb{C}^{n+1}$ we have a canonical metric defined by $g=\sum_{i=0}^{n}dz_i\otimes d\overline{z}_i$. We would like this metric to descend to the quotient. Let $\iota:S^{2n+1}\to\mathbb{C}^{n+1}$ be the inclusion map. Then $\iota^*g$ is a canonically defined metric on $S^{2n+1}$, called the round metric. It is constant on the fibres of $\pi_2$, since the fibres are the orbits of $U(1)$. We leave the details as an exercise. Therefore, $\iota^*g$ descends to $\mathbb{CP}^n$, to give the Fubini-Study metric. In local coordinates, it is given by
+$$h(\frac{\partial}{\partial z_i},\frac{\partial}{\partial\overline{z}_j})=\frac{(1+|z|^2)\delta_{ij}-\overline{z}_iz_j}{(1+|z|^2)^2}$$
 \end{proof}
 \begin{remark}
-  As a part of the proof above, we established the Hopf fibration, which is an example of a so-called principal $G$-bundle, where $G$ is a Lie group. In this case, $G=S^1=U(1)$.
-  $$S^1\xhookrightarrow{}S^{2n+1}\to\mathbb{CP}^n$$
+As a part of the proof above, we established the Hopf fibration, which is an example of a so-called principal $G$-bundle, where $G$ is a Lie group. In this case, $G=S^1=U(1)$.
+$$S^1\xhookrightarrow{}S^{2n+1}\to\mathbb{CP}^n$$
 \end{remark}
 Now that we have a metric, it is actually straightforward to define a symplectic structure, due to the following result.
 \begin{theorem}
-  Let $M$ be a smooth manifold. Then $M$ might have a symplectic, almost complex and/or Riemannian structure, denoted by $\omega$, $J$ and $g$ respectively. Given two of these structures, we can use them to construct the remaining one, in a compatible way.
+Let $M$ be a smooth manifold. Then $M$ might have a symplectic, almost complex and/or Riemannian structure, denoted by $\omega$, $J$ and $g$ respectively. Given two of these structures, we can use them to construct the remaining one, in a compatible way.
 \end{theorem}
 \begin{proof}
-  The reader may verify that the following indeed defines each of the structures as claimed.
-  \begin{enumerate} 
+The reader may verify that the following indeed defines each of the structures as claimed.
+\begin{enumerate} 
     \item $\omega=g\circ (J\otimes\text{id})$
     \item $g=\omega\circ(\text{id}\otimes J)$
-    \item Given $\omega$ and $g$, we obtain $J$ through polar decomposition, see \cite{book:cds}.
-      %https://math.mit.edu/classes/18.157/S2012/lecturesonsymplecticgeometryanacannas.pdf
-  \end{enumerate}
+    \item Given $\omega$ and $g$, we obtain $J$ through polar decomposition, see \cite{silva}.
+    %https://math.mit.edu/classes/18.157/S2012/lecturesonsymplecticgeometryanacannas.pdf
+\end{enumerate}
 \end{proof}
 \begin{corollary}
-  Any complex manifold with a metric has a symplectic structure defined by $\omega=g\circ (J\otimes\text{id})$. In particular, any projective complex manifold $Z\subset\mathbb{CP}^n$ has a canonical symplectic structure defined by $\omega(X,Y)=\iota^*h(J(X),Y)$.
+Any complex manifold with a metric has a symplectic structure defined by $\omega=g\circ (J\otimes\text{id})$. In particular, any projective complex manifold $Z\subset\mathbb{CP}^n$ has a canonical symplectic structure defined by $\omega(X,Y)=\iota^*h(J(X),Y)$.
 \end{corollary}
 Next, we have an example from the realm of Poisson geometry. This is in some sense a generalisation of symplectic geometry. The theory of Poisson manifolds is a very active research area, related to quantisation of physical theories, as well as modelling constraints on physical systems.
 \begin{definition}
-  An almost Poisson manifold is a pair $(M,\Pi)$ such that the bracket $\{\cdot,\cdot\}:C^\infty(M)\times C^\infty(M)\to C^\infty(M)$ defined by $\{f,g\}=\Pi(df,dg)$ satisfies the axioms of a Lie algebra, save for the Jacobi identity. If the bracket satisfies the Jacobi identity, the pair is called a Poisson manifold.
+An almost Poisson manifold is a pair $(M,\Pi)$ such that the bracket $\{\cdot,\cdot\}:C^\infty(M)\times C^\infty(M)\to C^\infty(M)$ defined by $\{f,g\}=\Pi(df,dg)$ satisfies the axioms of a Lie algebra, save for the Jacobi identity. If the bracket satisfies the Jacobi identity, the pair is called a Poisson manifold.
 \end{definition}
 \begin{remark}
-  The Jacobi identity is precisely equivalent to the condition that $\text{ad}(X)=[X,\cdot]$ is a derivation of the Lie algebra $(\mathfrak{g},[\cdot,\cdot])$. In the context of the Poisson bracket above, we have two different algebraic operations on $C^\infty(M)$. Namely, pointwise multiplication and the Poisson bracket. By definition, $\{f,\cdot\}$ is a derivation of the algebra $(C^\infty(M),\cdot)$. The requirement that the Jacobi identify be satisfied, means that $\{f,\cdot\}$ is also a deriviation w.r.t. $(C^\infty(M),\{\cdot,\cdot\})$. A Poisson manifold is then a manifold with this mutually compatible structure, making $C^\infty(M)$ into an infinite-dimensional Lie algebra.
+The Jacobi identity is precisely equivalent to the condition that $\text{ad}(X)=[X,\cdot]$ is a derivation of the Lie algebra $(\mathfrak{g},[\cdot,\cdot])$. In the context of the Poisson bracket above, we have two different algebraic operations on $C^\infty(M)$. Namely, pointwise multiplication and the Poisson bracket. By definition, $\{f,\cdot\}$ is a derivation of the algebra $(C^\infty(M),\cdot)$. The requirement that the Jacobi identify be satisfied, means that $\{f,\cdot\}$ is also a deriviation w.r.t. $(C^\infty(M),\{\cdot,\cdot\})$. A Poisson manifold is then a manifold with this mutually compatible structure, making $C^\infty(M)$ into an infinite-dimensional Lie algebra.
 \end{remark}
 Given an almost Poisson structure, we can again find a criterion for it being a Poisson structure in terms of a bracket operation.
 \begin{theorem}
-  Let $(M,\Pi)$ be an almost Poisson manifold. Then this pair defines a Poisson structure if and only if $[\Pi,\Pi]_{SN}=0$ where $[\cdot,\cdot]_{SN}$ is the Schouten-Nijenhuis bracket.
+Let $(M,\Pi)$ be an almost Poisson manifold. Then this pair defines a Poisson structure if and only if $[\Pi,\Pi]_{SN}=0$ where $[\cdot,\cdot]_{SN}$ is the Schouten-Nijenhuis bracket.
 \end{theorem}
 Let us give an important example of a Poisson manifold.
-\begin{example}
-  Let $\mathfrak{g}$ be a Lie algebra of finite dimension, and let $\mathfrak{g}^*$ be its dual as a vector space, with its standard smooth manifold structure. let $x^1,\dots,x^n$ denote the coordinates on $\mathfrak{g}$ and $\mu^1,\dots,\mu^n$ the dual coordinates on $\mathfrak{g}^*$. Then we can define a bracket on $C^\infty(\mathfrak{g}^*)$ by 
-  $$\{f,g\}:= c_{ij}^k\mu_k\frac{\partial f}{\partial\mu^i}\frac{\partial g}{\partial\mu^j}$$
-  where $c_{ij}^k$ are the structure constants of $\mathfrak{g}$, defined by $[x_i,x_j]=c_{ij}^kx_k$. This class of Poisson manifolds is called Lie-Poisson manifolds, and they were originally studied by Sophus Lie himself.
-\end{example}
+\begin{exmp}
+Let $\mathfrak{g}$ be a Lie algebra of finite dimension, and let $\mathfrak{g}^*$ be its dual as a vector space, with its standard smooth manifold structure. let $x^1,\dots,x^n$ denote the coordinates on $\mathfrak{g}$ and $\mu^1,\dots,\mu^n$ the dual coordinates on $\mathfrak{g}^*$. Then we can define a bracket on $C^\infty(\mathfrak{g}^*)$ by 
+$$\{f,g\}:= c_{ij}^k\mu_k\frac{\partial f}{\partial\mu^i}\frac{\partial g}{\partial\mu^j}$$
+where $c_{ij}^k$ are the structure constants of $\mathfrak{g}$, defined by $[x_i,x_j]=c_{ij}^kx_k$. This class of Poisson manifolds is called Lie-Poisson manifolds, and they were originally studied by Sophus Lie himself.
+\end{exmp}
 In Poisson geometry, it is desirable to find a so-called symplectic realisation of a Poisson manifold. In some sense that can be made precise, this means "untangling" the Poisson manifold into a simpler structure, which is a symplectic manifold. 
-\begin{theorem}[Crainic,Fernandes \cite{Crainic2003}]
-  %https://arxiv.org/abs/math/0105033
-  A Poisson manifold admits a complete symplectic realisation if and only if it is integrable.
+\begin{theorem}[Crainic,Fernandes \cite{crainic}]
+%https://arxiv.org/abs/math/0105033
+A Poisson manifold admits a complete symplectic realisation if and only if it is integrable.
 \end{theorem}
 The specifics of this notion of integrability are somewhat beyond our scope, because we are entering the realm of Lie groupoids and Lie algebroids. We shall state the definition of a Lie algebroid after the following example, so that the reader can see how all these concepts fit into the framework of Lie algebroids.\par
 Our final example is that of a Dirac structure on a manifold. In order to do this, we first want to define two operations on the space $\mathbb{T}M:=TM\oplus T^*M$. Namely, 
 \begin{enumerate}
-  \item A symmetric bilinear form $\langle\cdot,\cdot\rangle:\mathbb{T}M\to\mathbb{R}$ defined by $$\langle(X_p,\alpha_p),(Y_p,\beta_p)\rangle=\alpha_p(Y_p)+\beta_p(X_p)$$
-  \item The Courant bracket $[\cdot,\cdot]_C:\Gamma(\mathbb{T}M)\times\Gamma(\mathbb{T}M)\to\Gamma(\mathbb{T}M)$ defined by $$[(X,\alpha),(Y,\beta)]_C=([X,Y],\mathcal{L}_X\beta-\iota_Yd\alpha)$$
+    \item A symmetric bilinear form $\langle\cdot,\cdot\rangle:\mathbb{T}M\to\mathbb{R}$ defined by $$\langle(X_p,\alpha_p),(Y_p,\beta_p)\rangle=\alpha_p(Y_p)+\beta_p(X_p)$$
+    \item A bracket  $[\![\cdot,\cdot]\!]:\Gamma(\mathbb{T}M)\times\Gamma(\mathbb{T}M)\to\Gamma(\mathbb{T}M)$ defined by $$[\![(X,\alpha),(Y,\beta)]\!]=([X,Y],\mathcal{L}_X\beta-\iota_Yd\alpha)$$
 \end{enumerate}
+\begin{remark}
+There is also a skew-symmetric bracket on $\mathbb{T}M$, defined by
+$$[(X,\alpha),(Y,\beta)]_C=([X,Y],\mathcal{L}_X\beta-\mathcal{L}_Y\alpha+\frac{1}{2}d(\alpha(Y)-\beta(X)))$$
+called the Courant bracket. We will refer to this bracket later on, as it makes $\mathbb{T}M$ into a Lie algebroid. The bracket $[\![\cdot,\cdot]\!]$ instead produces a Courant algebroid.
+\end{remark}
 We are now interested in sub-bundles $L\subset\mathbb{T}M$ which are maximally isotropic with respect to the symmetric form above. This means that $L$ has rank $\dim M$, and $\langle L,L\rangle=0$. Indeed, this is not an inner product, so this does not only hold when $L=0$.
 \begin{definition}
-  An almost Dirac structure on $M$ is a sub-bundle $L\subset\mathbb{T}M$ which is maximally isotropic. $L$ is called a Dirac structure if $[\Gamma(L),\Gamma(L)]_C\subset\Gamma(L)$.
+An almost Dirac structure on $M$ is a sub-bundle $L\subset\mathbb{T}M$ which is maximally isotropic. $L$ is called a Dirac structure if $[\![\Gamma(L),\Gamma(L)]\!]\subset\Gamma(L)$.
 \end{definition}
 An important class of Dirac structures is determined by foliations. This is where we can use the theorem of Frobenius.
-\begin{example}
-  Let $\mathcal{D}\subset TM$ be a (regular) distribution. We define $$\text{Ann}(\mathcal{D})_p:=\{\alpha\in T_p^*M\mid \alpha(v)=0\quad\forall v\in \mathcal{D}_p\}$$
-  This determines a sub-bundle of $T^*M$ called the annihilator of $\mathcal{D}$, and we denote it by $\text{Ann}(\mathcal{D})$. Then by construction, $\mathcal{D}\oplus\text{Ann}(\mathcal{D})\subset\mathbb{T}M$ is maximally isotropic. This defines a Dirac structure if and only if $[\Gamma(\mathcal{D}),\Gamma(\mathcal{D})]\subset\Gamma(\mathcal{D})$. By Frobenius's theorem, this is equivalent to $\mathcal{D}$ being completely integrable.
-\end{example}
+\begin{exmp}
+Let $\mathcal{D}\subset TM$ be a (regular) distribution. We define $$\text{Ann}(\mathcal{D})_p:=\{\alpha\in T_p^*M\mid \alpha(v)=0\quad\forall v\in \mathcal{D}_p\}$$
+This determines a sub-bundle of $T^*M$ called the annihilator of $\mathcal{D}$, and we denote it by $\text{Ann}(\mathcal{D})$. Then by construction, $\mathcal{D}\oplus\text{Ann}(\mathcal{D})\subset\mathbb{T}M$ is maximally isotropic. This defines a Dirac structure if and only if $[\Gamma(\mathcal{D}),\Gamma(\mathcal{D})]\subset\Gamma(\mathcal{D})$. By Frobenius's theorem, this is equivalent to $\mathcal{D}$ being completely integrable.
+\end{exmp}
 We now give the definition of a Lie algebroid.
 \begin{definition}
-  A Lie algebroid is a vector bundle $E\xrightarrow{\pi}M$ with a bracket $[\cdot,\cdot]$ such that $(\Gamma(E),[\cdot,\cdot])$ is a Lie algebra. Furthermore, there is a vector bundle morphism $\rho:E\to TM$ called the anchor, such that $[X,f\cdot Y]=\rho(X)f\cdot Y+f\cdot[X,Y]$ for all $X,Y\in\Gamma(E)$, $f\in C^\infty(M)$.
+A Lie algebroid is a vector bundle $E\xrightarrow{\pi}M$ with a bracket $[\cdot,\cdot]$ such that $(\Gamma(E),[\cdot,\cdot])$ is a Lie algebra. Furthermore, there is a vector bundle morphism $\rho:E\to TM$ called the anchor, such that $[X,f\cdot Y]=\rho(X)f\cdot Y+f\cdot[X,Y]$ for all $X,Y\in\Gamma(E)$, $f\in C^\infty(M)$.
 \end{definition}
 We have encountered several of these in the text above.
-\begin{example}
-  Let $(M,\Pi)$ be a Poisson manifold, and define $\rho:T^*M\to TM$ by $\rho(\alpha)=\Pi(\alpha,\cdot)$. Define a bracket on $\Gamma(T^*M)$ by $$[\alpha,\beta]=\mathcal{L}_{\rho(\alpha)}\beta-\mathcal{L}_{\rho(\beta)}\alpha-d\Pi(\alpha,\beta)$$
-  Then the triple $(T^*M,[\cdot,\cdot],\rho)$ is a Lie algebroid.
-\end{example}
-\begin{example}
-  Let $L\subset\mathbb{T}M$ be a Dirac structure on $M$ and define $\rho:=\text{pr}|_L$, where $\text{pr}:\mathbb{T}M\to TM$ is the natural projection. Let $[\cdot,\cdot]$ be the restriction of the Courant bracket to $\Gamma(L)$. Then $(L,[\cdot,\cdot],\rho)$ is a Lie algebroid.
-\end{example}
+\begin{exmp}
+Let $(M,\Pi)$ be a Poisson manifold, and define $\rho:T^*M\to TM$ by $\rho(\alpha)=\Pi(\alpha,\cdot)$. Define a bracket on $\Gamma(T^*M)$ by $$[\alpha,\beta]=\mathcal{L}_{\rho(\alpha)}\beta-\mathcal{L}_{\rho(\beta)}\alpha-d\Pi(\alpha,\beta)$$
+Then the triple $(T^*M,[\cdot,\cdot],\rho)$ is a Lie algebroid.
+\end{exmp}
+\begin{exmp}
+Let $L\subset\mathbb{T}M$ be a Dirac structure on $M$ and define $\rho:=\text{pr}|_L$, where $\text{pr}:\mathbb{T}M\to TM$ is the natural projection. Let $[\cdot,\cdot]_C$ be the restriction of the Courant bracket to $\Gamma(L)$. Then $(L,[\cdot,\cdot]_C,\rho)$ is a Lie algebroid.
+\end{exmp}
 \begin{exercise}
-  Find a Lie algebroid structure for a given symplectic structure $(M,\omega)$.
+Find a Lie algebroid structure for a given symplectic structure $(M,\omega)$.
 \end{exercise}
 
 \chapter{Connections on Vector Bundles (B. Brongers)}
